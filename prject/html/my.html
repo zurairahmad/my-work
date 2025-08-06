@@ -1,0 +1,39 @@
+<div class="slideshow">
+    <img src="image1.jpg" class="active">
+    <img src="image2.jpg">
+    <img src="image3.jpg">
+</div>
+
+<style>
+    .slideshow {
+        position: relative;
+        width: 100%;
+        height: 400px;
+    }
+    .slideshow img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 1s;
+    }
+    .slideshow img.active {
+        opacity: 1;
+    }
+</style>
+
+<script>
+    let current = 0;
+    const images = document.querySelectorAll('.slideshow img');
+    
+    function cycleImages() {
+        images[current].classList.remove('active');
+        current = (current + 1) % images.length;
+        images[current].classList.add('active');
+    }
+    
+    setInterval(cycleImages, 3000);
+</script>
